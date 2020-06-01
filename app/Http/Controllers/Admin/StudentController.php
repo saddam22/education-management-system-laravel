@@ -11,6 +11,7 @@ use DB;
 use App\Admin\StudentForm;
 use App\Admin\TypeForm;
 use App\Admin\SubTypeForm;
+use App\Admin\ParentForm;
 use Brian2694\Toastr\Facades\Toastr;
 
 class StudentController extends Controller
@@ -31,8 +32,9 @@ class StudentController extends Controller
     public function create()
     {
         $types = TypeForm::select('id','type')->get();
+        $parents = ParentForm::select('id','fname','lname')->get();
         $subtypes = SubTypeForm::select('id','subtype')->get();
-        return view('admin.student.create',compact('types','subtypes'));
+        return view('admin.student.create',compact('types','subtypes','parents'));
     }
 
     public function store(Request $request)
@@ -55,10 +57,12 @@ class StudentController extends Controller
         }else {
             $imagename = 'dafault.png';
         }
+        $type_id = TypeForm::WHERE('id',$request->Class)->select('id')->first();
         
         $studentform = new StudentForm();
-        $studentform->type_id = $request->type_id;
-        $studentform->subtype_id = $request->subtype_id;
+        $studentform->type_id = $type_id->id;
+        $studentform->subtype_id = $request->Class;
+        $studentform->parent_id = $request->parent_id;
         $studentform->fname = $request->fname;
         $studentform->lname = $request->lname;
         $studentform->dob = $request->dob;
@@ -69,7 +73,7 @@ class StudentController extends Controller
         $studentform->image = $imagename;
         $studentform->save();
         Toastr::success('Student Data Successfully Created!! : ', 'success');
-        return redirect()->route('admin.type.create');
+        return redirect()->route('admin.student.create');
 
     }
 

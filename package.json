@@ -30,6 +30,6 @@
         "socket.io-client": "^2.3.0",
         "vue-chat-scroll": "^1.4.0",
         "vue-timeago": "^5.1.2",
-        "webrtc-adapter": "^7.6.0"
+        "webrtc-adapter": "^7.6.1"
     }
 }

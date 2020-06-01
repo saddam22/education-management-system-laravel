@@ -23,8 +23,8 @@ class ParentController extends Controller
                   ->join('sub_type_forms','parent_forms.subtype_id','=','sub_type_forms.id')
                   ->select('parent_forms.*','type_forms.type','sub_type_forms.subtype')
                   ->get();
-            
-         return view('admin.student.index',compact('parents'));   
+            dd($parents);
+         return view('admin.parent.index',compact('parents'));   
     }
 
     public function create()

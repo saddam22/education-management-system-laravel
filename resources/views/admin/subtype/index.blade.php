@@ -24,7 +24,7 @@ All Student | Admission Form Data
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="card">
 <div class="header">
-<button class="btn bg-purple btn-lg waves-effect" type="button">All Types <span class="badge">47</span></button>
+<button class="btn bg-purple btn-lg waves-effect" type="button">All Types <span class="badge">{{ $subtype->count() }}</span></button>
 </div>
 <div class="body">
 <div class="table-responsive">

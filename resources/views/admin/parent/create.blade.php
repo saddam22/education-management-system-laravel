@@ -80,8 +80,8 @@ Create Student | Admission Form Data
       @foreach($types as $typeform)
        <div class="col-md-6">
       <select name="type_id" class="form-control show-tick">
-            <b><option value="{{ $typeform->id }}">-- Select {{ $typeform->type}} --</option></b>
-               @foreach($subtypes as $subtypeform)
+            <b><option value="{{ $typeform->id }}">-- Select {{ $typeform->type }} --</option></b>
+              @foreach($subtypes as $subtypeform)
             <option name="subtype_id" value="{{ $subtypeform->id }}">{{ $subtypeform->subtype }}</option>
               @endforeach   
         </select>

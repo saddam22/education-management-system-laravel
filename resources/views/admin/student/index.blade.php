@@ -14,7 +14,7 @@ All Student | Admission Form Data
 @section('main-content')
   <div class="container-fluid">
 <div class="block-header">
-   <a href="{{ route('admin.type.create') }}" class="btn btn-warning btn-lg waves-effect">
+   <a href="{{ route('admin.student.create') }}" class="btn btn-warning btn-lg waves-effect">
          <i class="material-icons">create</i>
          <span>Create</span>
     </a>
@@ -24,7 +24,7 @@ All Student | Admission Form Data
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="card">
 <div class="header">
-<button class="btn bg-purple btn-lg waves-effect" type="button">All Types <span class="badge">47</span></button>
+<button class="btn bg-purple btn-lg waves-effect" type="button">All Students <span class="badge">{{ $students->count() }}</span></button>
 </div>
 <div class="body">
 <div class="table-responsive">
@@ -32,36 +32,38 @@ All Student | Admission Form Data
 <thead>
     <tr>
         <th>ID</th>
-        <th>Type</th>
+        <th>Photo</th>
+        <th>Full Name</th>
+        <th>Parents</th>
+        <th>Address</th>
         <th>Action</th>
-        <th>created_at</th>
-        <th>updated_at</th>
     </tr>
 </thead>
 <tfoot>
      <tr>
         <th>ID</th>
-        <th>Type</th>
-        <th>created_at</th>
-        <th>updated_at</th>
+        <th>Photo</th>
+        <th>Full Name</th>
+        <th>Parents</th>
+        <th>Address</th>
         <th>Action</th>
-
     </tr>
 </tfoot>
 <tbody>
-@foreach($types as $key=>$type)
+@foreach($students as $key=>$student)
 <tr>
     <td>{{ $key + 1 }}</td>
-    <td>{{ $type->type }}</td>
-    <td>{{ $type->created_at }}</td>
-    <td>{{ $type->updated_at }}</td>
+    <td><img src="{{ asset('uploads/studentimages/'.$student->image) }}" width="60" height="60"></td>
+    <td>{{ $student->fname ." ". $student->lname }}</td>
+    <td>{{ $student->first_name ." ". $student->last_name }}</td>
+    <td>{{ $student->addresses }}</td>
     <td>
      <a class="btn btn-primary" href=""><i class="material-icons">remove_red_eye</i></a>
-     <a class="btn btn-success" href="{{ route('admin.type.edit', $type->id) }}"><i class="material-icons">edit</i></a> 
-     <button class="btn btn-danger waves-effect" type="button" onclick="deleteType({{ $type->id }})">
+     <a class="btn btn-success" href="{{ route('admin.student.edit', $student->id) }}"><i class="material-icons">edit</i></a> 
+     <button class="btn btn-danger waves-effect" type="button" onclick="deleteType({{ $student->id }})">
         <i class="material-icons">delete</i>
     </button>
-    <form id="delete-form-{{ $type->id }}" action="{{ route('admin.type.destroy',$type->id) }}" method="POST" style="display: none;">
+    <form id="delete-form-{{ $student->id }}" action="{{ route('admin.student.destroy',$student->id) }}" method="POST" style="display: none;">
         @csrf
           @method('DELETE')
     </form>

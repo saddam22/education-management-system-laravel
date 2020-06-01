@@ -32,6 +32,7 @@
     <link href="{{ asset('assets/sms') }}/css/themes/all-themes.css" rel="stylesheet" />
     <!--<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">-->
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
     @yield('css')
 </head>
 

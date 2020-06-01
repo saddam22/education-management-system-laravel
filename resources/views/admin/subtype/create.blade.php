@@ -44,18 +44,28 @@ Create Sub Types | Admission Form Data
     </div>
     </div>
   </div>
-     <a href="{{ route('admin.type.index') }}" class="btn bg-amber btn-lg waves-effect">
-        <i class="material-icons">arrow_back</i>
-       <span>Back</span>
-     </a>
-     <button type="submit" class="btn bg-pink btn-lg waves-effect">
+
+     <div class="row">
+    <div class="col-md-4">
+      <a href="{{ route('admin.subtype.index') }}" class="btn bg-amber btn-lg btn-block waves-effect">
+      <i class="material-icons">arrow_back</i>
+      <span>Back</span>
+       </a> 
+     </div>
+    <div class="col-md-4">
+    <button type="submit" class="btn bg-pink btn-lg btn-block waves-effect">
         <i class="material-icons">save</i>
        <span>Save</span>
-    </button>
-     <button type="submit" class="btn bg-blue btn-lg waves-effect">
+    </button>  
+    </div>
+    <div class="col-md-4">
+    <button type="submit" class="btn bg-blue btn-lg btn-block waves-effect">
         <i class="material-icons">clear</i>
        <span>Clear</span>
     </button>
+    </div>
+    </div>
+
 </form>
 </div>
 </div>

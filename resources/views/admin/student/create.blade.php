@@ -79,17 +79,30 @@ Create Student | Admission Form Data
     <div class="row clearfix">
       @foreach($types as $typeform)
        <div class="col-md-6">
-      <select class="form-control show-tick">
-            <b><option name="type_id" value="{{ $typeform->id }}">-- Select {{ $typeform->type}} --</option></b>
+      <select name="{{ $typeform->type }}" class="form-control show-tick">
+            <b><option>-- Select {{ $typeform->type}} --</option></b>
                @foreach($subtypes as $subtypeform)
+                 @if($typeform->id == $subtypeform->id)
             <option value="{{ $subtypeform->id }}">{{ $subtypeform->subtype }}</option>
+                @endif
               @endforeach   
         </select>
       </div>
       @endforeach  
     </div> 
    <!--end row 2--> 
-
+    <!--start row 2-->
+    <div class="row clearfix">
+       <div class="col-md-6">
+      <select name="parent_id" class="form-control show-tick">
+            <b><option>-- Select Parents --</option></b>
+               @foreach($parents as $parent)
+            <option value="{{ $parent->id }}">{{ $parent->fname ." ". $parent->lname }}</option>
+              @endforeach   
+        </select>
+      </div>
+    </div> 
+   <!--end row 2-->
    <!--start row 3-->
     <div class="row clearfix">
       <div class="col-md-6"> 
@@ -136,7 +149,7 @@ Create Student | Admission Form Data
 
     <div class="row">
       <div class="col-md-4">
-    <a href="{{ route('admin.type.index') }}" class="btn bg-amber btn-lg btn-block waves-effect">
+    <a href="{{ route('admin.student.index') }}" class="btn bg-amber btn-lg btn-block waves-effect">
         <i class="material-icons">arrow_back</i>
        <span>Back</span>
      </a> 
